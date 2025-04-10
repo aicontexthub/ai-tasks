@@ -1,0 +1,79 @@
+task: setup-ui-context
+description: Document the UI component system based on shadcn/ui. Generate base reference and custom variants.
+files:
+  - path: contexts/ui-components/shadcn-ui-reference.md
+    content: |
+      # 🧩 Base UI Reference: shadcn/ui
+
+      This project uses the components from the [`shadcn/ui`](https://ui.shadcn.com/) system as base.
+
+      By default, you should use **their standard APIs** without additional modification.
+
+      ## 🧱 Standard Components (no changes)
+
+      You can use directly from `@/components/ui`:
+
+      - Input
+      - Select
+      - Checkbox
+      - Label
+      - Dialog
+      - Tooltip
+
+      ## 🛠️ Custom Components
+
+      Check their corresponding `.md` if the component was extended:
+
+      - [`button`](./button.md)
+      - [`card`](./card.md)
+      - [`alert`](./alert.md)
+
+  - path: contexts/ui-components/button.md
+    content: |
+      # 🧱 Component: Button
+
+      Extends the `Button` from `shadcn/ui` with custom variants.
+
+      ## ✅ Available Variants
+
+      - `default`
+      - `ghost`
+      - `outline`
+      - `gradient` ← custom
+      - `destructive`
+
+      ❌ Do not use duplicated Tailwind classes like `bg-gradient-to-r`.
+      ✅ Always use `variant="..."` from the centralized component.
+
+  - path: contexts/ui-components/card.md
+    content: |
+      # 🧱 Component: Card
+
+      Interface container used in dashboard views.
+
+      Expected structure:
+
+      ```tsx
+      <Card>
+        <CardHeader>...</CardHeader>
+        <CardContent>...</CardContent>
+      </Card>
+      ```
+
+      `with-border` variant is allowed if custom border applies.
+
+  - path: contexts/ui-components/alert.md
+    content: |
+      # 🧱 Component: Alert
+
+      We extend the base alert to add automatic icons according to type (`info`, `success`, `error`, etc).
+
+      Example:
+
+      ```tsx
+      <Alert type="success" icon>
+        Context saved correctly.
+      </Alert>
+      ```
+
+      SVG icons managed automatically by type from a wrapper.

@@ -1,0 +1,62 @@
+task: implement-dashboard-protection
+description: Proteger la ruta `/dashboard` en AI Context Hub para que solo usuarios autenticados accedan, usando Supabase y Next.js 15.
+priority: high
+status: in-progress
+
+context:
+  project: AI Context Hub
+  tech_stack:
+    - nextjs@15
+    - supabase
+    - tailwindcss@4
+  domain: auth
+  tags:
+    - frontend
+    - auth
+    - protected-route
+
+objectives:
+  - Restringir el acceso a la ruta `/dashboard` solo a usuarios con sesión activa.
+  - Aplicar verificación server-side con Supabase y App Router.
+  - Asegurar redirección a `/login` si no hay sesión.
+
+steps:
+  - title: Crear archivo `app/dashboard/page.tsx`
+    description: Debe ser un React Server Component sin `"use client"`.
+
+  - title: Obtener sesión del usuario desde el servidor
+    description: Usar `createServerComponentClient` desde Supabase.
+    code: |
+      const supabase = createServerComponentClient({ cookies });
+      const { data: { session } } = await supabase.auth.getSession();
+
+  - title: Redirigir si no hay sesión
+    description: Usar `redirect('/login')` de `next/navigation`.
+    code: |
+      if (!session) redirect('/login');
+
+  - title: Renderizar contenido del dashboard
+    description: Mostrar layout base o bienvenida si hay sesión válida.
+
+  - title: Validar comportamiento
+    description: Comprobar redirección en navegador privado o sin sesión activa.
+
+acceptance_criteria:
+  - La ruta `/dashboard` está protegida y no es accesible sin sesión.
+  - La verificación ocurre del lado del servidor.
+  - El código no usa `"use client"` innecesariamente.
+  - Se redirige a `/login` si no hay sesión activa.
+
+references:
+  - https://supabase.com/docs/guides/auth/server-side/nextjs
+  - https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
+
+dependencies:
+  - task: task-001
+    status: completed
+  - task: task-002
+    status: completed
+
+notes:
+  - Asegúrate de tener configurada la cookie y el cliente de Supabase correctamente.
+  - Esta protección puede replicarse luego en otras rutas privadas.

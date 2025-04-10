@@ -1,0 +1,12 @@
+{
+  "default_language": "en",
+  "default_output_language": "en",
+  "force_output_code_language": "en",
+  "task_id_format": "task-###.yaml",
+  "review_id_format": "review-task-###.md",
+  "templates_path": "./templates",
+  "examples_path": "./examples",
+  "reviews_path": "./reviews",
+  "project_context": "AI Context Hub",
+  "notes": "This file defines global options for using AI-assisted tasks"
+}

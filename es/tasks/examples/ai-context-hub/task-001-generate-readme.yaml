@@ -1,0 +1,110 @@
+task: generate-readme
+description: Create a comprehensive and super useful README for the AI Context Hub Tasks CLI repository
+priority: high
+status: in-progress
+
+context:
+  project_name: AI Context Hub Tasks CLI
+  project_type: CLI Tool
+  tech_stack:
+    - Node.js
+    - TypeScript
+    - YAML
+    - Markdown
+
+sections:
+  - name: Project Overview
+    description: Clear explanation of what the project does and its purpose
+    required: true
+    content:
+      - Project name and brief description
+      - Main features and capabilities
+      - Target audience
+      - Key benefits
+
+  - name: Installation
+    description: Step-by-step installation instructions
+    required: true
+    content:
+      - Prerequisites
+      - Installation commands
+      - Configuration steps
+      - Environment setup
+
+  - name: Usage
+    description: Detailed usage instructions with examples
+    required: true
+    content:
+      - Available commands
+      - Command examples
+      - Common use cases
+      - Task templates usage
+
+  - name: Project Structure
+    description: Explanation of the project's directory structure
+    required: true
+    content:
+      - Directory layout
+      - Key files and their purposes
+      - Template locations
+      - Configuration files
+
+  - name: Development
+    description: Information for developers
+    required: true
+    content:
+      - Development setup
+      - Adding new tasks
+      - Creating templates
+      - Testing procedures
+
+  - name: Contributing
+    description: Guidelines for contributing to the project
+    required: true
+    content:
+      - Contribution process
+      - Code standards
+      - Pull request guidelines
+      - Issue reporting
+
+  - name: License
+    description: Project license information
+    required: true
+    content:
+      - License type
+      - Usage restrictions
+      - Copyright information
+
+deliverables:
+  - file: README.md
+    location: root
+    format: markdown
+    required: true
+
+success_criteria:
+  - README is comprehensive and well-structured
+  - All sections are properly documented
+  - Examples are clear and practical
+  - Installation and usage instructions are foolproof
+  - Documentation follows best practices
+  - Includes visual elements (badges, diagrams if needed)
+
+dependencies:
+  - task: review-existing-readme
+    status: completed
+  - task: gather-project-info
+    status: completed
+
+timeline:
+  - phase: Planning
+    duration: 1 hour
+    status: completed
+  - phase: Content Creation
+    duration: 2 hours
+    status: in-progress
+  - phase: Review
+    duration: 1 hour
+    status: pending
+  - phase: Finalization
+    duration: 1 hour
+    status: pending

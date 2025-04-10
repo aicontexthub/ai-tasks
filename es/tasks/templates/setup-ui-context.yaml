@@ -1,0 +1,79 @@
+task: setup-ui-context
+description: Documenta el sistema de componentes UI basado en shadcn/ui. Genera referencia base y variantes personalizadas.
+files:
+  - path: contexts/ui-components/shadcn-ui-reference.md
+    content: |
+      # 🧩 Referencia base de UI: shadcn/ui
+
+      Este proyecto utiliza los componentes del sistema [`shadcn/ui`](https://ui.shadcn.com/) como base.
+
+      Por defecto, se deben usar **sus APIs estándar** sin modificación adicional.
+
+      ## 🧱 Componentes estándar (sin cambios)
+
+      Puedes usar directamente desde `@/components/ui`:
+
+      - Input
+      - Select
+      - Checkbox
+      - Label
+      - Dialog
+      - Tooltip
+
+      ## 🛠️ Componentes personalizados
+
+      Consulta su `.md` correspondiente si el componente fue extendido:
+
+      - [`button`](./button.md)
+      - [`card`](./card.md)
+      - [`alert`](./alert.md)
+
+  - path: contexts/ui-components/button.md
+    content: |
+      # 🧱 Componente: Button
+
+      Extiende el `Button` de `shadcn/ui` con variantes personalizadas.
+
+      ## ✅ Variantes disponibles
+
+      - `default`
+      - `ghost`
+      - `outline`
+      - `gradient` ← personalizada
+      - `destructive`
+
+      ❌ No usar clases Tailwind duplicadas como `bg-gradient-to-r`.
+      ✅ Usar siempre `variant="..."` desde el componente centralizado.
+
+  - path: contexts/ui-components/card.md
+    content: |
+      # 🧱 Componente: Card
+
+      Contenedor de interfaz usado en vistas del dashboard.
+
+      Estructura esperada:
+
+      ```tsx
+      <Card>
+        <CardHeader>...</CardHeader>
+        <CardContent>...</CardContent>
+      </Card>
+      ```
+
+      Se permite variante `with-border` si aplica borde personalizado.
+
+  - path: contexts/ui-components/alert.md
+    content: |
+      # 🧱 Componente: Alert
+
+      Extendemos el alert base para añadir íconos automáticos según tipo (`info`, `success`, `error`, etc).
+
+      Ejemplo:
+
+      ```tsx
+      <Alert type="success" icon>
+        Contexto guardado correctamente.
+      </Alert>
+      ```
+
+      Iconos SVG gestionados automáticamente por tipo desde un wrapper.

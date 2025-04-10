@@ -1,0 +1,52 @@
+task: define-project-context
+description: Define the context and technical stack for a modern backend API using FastAPI, PostgreSQL, and Pydantic v2.
+priority: high
+status: completed
+
+context:
+  project: AI-powered API
+  tech_stack:
+    - python@3.12
+    - fastapi
+    - pydantic@2.x
+    - postgresql
+    - supabase (optional for auth or storage)
+  architecture: RESTful API, async I/O, Pydantic for models, SQLAlchemy/Postgres for DB
+  conventions:
+    - Code style: black + isort
+    - Type hinting: full typing with `Annotated[...]`
+    - Separation of concerns by module (routes, services, models)
+
+objectives:
+  - Set the base structure and design decisions for the backend project
+  - Document preferred conventions and libraries
+  - Make it ready for use with AI-generated tasks
+
+steps:
+  - title: Define folder structure
+    description: Use `app/` with subfolders for `routes`, `models`, `schemas`, `services`, `db`.
+
+  - title: Select DB layer
+    description: Use SQLAlchemy 2.0 declarative or Supabase client (optional) for persistence.
+
+  - title: Configure settings
+    description: Use `pydantic.BaseSettings` or `dotenv` for env vars like `DATABASE_URL`.
+
+  - title: Add initial dependencies
+    description: Add to pyproject.toml or requirements.txt
+      - fastapi
+      - pydantic
+      - uvicorn
+      - sqlalchemy
+      - psycopg2-binary
+
+acceptance_criteria:
+  - Folder structure and conventions are established
+  - Stack is documented for future tasks
+  - Settings and env loading is ready
+  - Project is ready to receive structured AI tasks
+
+tags:
+  - context
+  - backend
+  - fastapi

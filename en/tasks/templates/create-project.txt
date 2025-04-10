@@ -1,0 +1,92 @@
+task: create-project
+description: Initialize the technical context of a new project. Generate files like project.md, stack.md, mvp.md and optional UI system documentation.
+prompts:
+  - question: 📦 What is the project name?
+    var: project_name
+  - question: ⚙️ Main stack (Next.js, TailwindCSS, Supabase, etc):
+    var: stack
+  - question: 🧱 What architecture do you use? (App Router, Server Components, Monorepo...):
+    var: architecture
+  - question: 🎯 What is the MVP objective?
+    var: mvp_goal
+  - question: 🎨 Do you use shadcn/ui as component base? (Y/n)
+    var: use_shadcn
+  - question: 🔧 Have you modified any base component from shadcn/ui? (Y/n)
+    var: custom_ui
+
+files:
+  - path: contexts/project.md
+    content: |
+      # 📦 Project: {{project_name}}
+
+      ## ⚙️ Main stack
+      {{stack}}
+
+      ## 🧱 Architecture
+      {{architecture}}
+
+      ## 🎯 MVP Objective
+      {{mvp_goal}}
+
+      ## 🧩 UI System
+      {{#if use_shadcn == "Y"}}
+      Based on [shadcn/ui](https://ui.shadcn.com). Check `contexts/ui-components/shadcn-ui-reference.md`.
+      {{else}}
+      shadcn/ui is not used.
+      {{/if}}
+
+  - path: contexts/mvp.md
+    content: |
+      # 🎯 MVP Objective – {{project_name}}
+
+      {{mvp_goal}}
+
+      We will validate if users:
+      - Find the core functionality useful
+      - Use the system recurrently
+      - Are willing to continue or pay for its use
+
+  - path: contexts/stack.md
+    content: |
+      # ⚙️ Technical Stack – {{project_name}}
+
+      Technologies used:
+      - {{stack}}
+
+      Architecture: {{architecture}}
+
+  {{#if use_shadcn == "Y"}}
+  - path: contexts/ui-components/shadcn-ui-reference.md
+    content: |
+      # 🧩 Base UI Reference: shadcn/ui
+
+      This project uses [shadcn/ui](https://ui.shadcn.com/) as base system.
+
+      Use the default API unless there is customization documented here.
+
+      ## Custom Components
+      {{#if custom_ui == "Y"}}
+      - [`button.md`](./button.md)
+      - [`card.md`](./card.md)
+      {{else}}
+      No customizations have been registered.
+      {{/if}}
+
+  {{#if custom_ui == "Y"}}
+  - path: contexts/ui-components/button.md
+    content: |
+      # 🧱 Component: Button
+
+      Custom `gradient` variant added.
+
+      Use `variant="gradient"` instead of duplicated classes `bg-gradient-to-r`.
+
+  - path: contexts/ui-components/card.md
+    content: |
+      # 🧱 Component: Card
+
+      Card extended with special layout for dashboard.
+
+      Use `CardHeader`, `CardContent` as in `/ui/card.tsx`.
+  {{/if}}
+  {{/if}}

@@ -1,0 +1,47 @@
+task: <task-name>
+description: <Short and clear description of the task>
+priority: medium
+status: pending
+
+context:
+  project: <Project name>
+  tech_stack:
+    - nextjs@15
+    - tailwindcss@4
+    - supabase
+  domain: <Module or system part> (auth, dashboard, etc.)
+  tags:
+    - feature
+    - refactor
+    - backend/frontend
+    - critical
+
+objectives:
+  - <What is expected to be achieved>
+  - <Why it is important>
+  - <What will be validated upon completion>
+
+steps:
+  - title: <Step 1>
+    description: <What needs to be done>
+    code: |
+      // (optional) code or structure example
+  - title: <Step 2>
+    description: <Continue with...>
+
+acceptance_criteria:
+  - <Condition 1: What must be met>
+  - <Condition 2: What should be seen in UI / API / DB>
+  - <Condition 3: Tests that should pass>
+
+references:
+  - https://useful-link.com/docs
+  - https://github.com/repo/example
+
+dependencies:
+  - task: <task-id> (optional)
+    status: completed/in-progress
+
+notes:
+  - You can use this template as a base for new detailed tasks.
+  - Ideal for use with AI agents that generate code step by step.

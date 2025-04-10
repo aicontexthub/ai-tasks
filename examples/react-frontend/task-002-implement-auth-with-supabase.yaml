@@ -1,0 +1,56 @@
+task: implement-auth-with-supabase
+description: Implement GitHub and Google authentication using Supabase in a Next.js 15 project with App Router and server components.
+priority: high
+status: completed
+
+context:
+  project: SaaS Frontend Platform
+  tech_stack:
+    - nextjs@15
+    - supabase
+    - react@19
+    - typescript
+  auth:
+    provider: Supabase Auth (OAuth GitHub + Google)
+    mode: Server-side session validation with Supabase Client
+  routes:
+    - /login
+    - /register
+    - /dashboard (protected)
+
+objectives:
+  - Enable login and registration via OAuth (GitHub + Google)
+  - Protect `/dashboard` route based on server session
+  - Use shadcn/ui for auth UI
+
+steps:
+  - title: Setup Supabase client on server
+    description: Create a utility using `createServerComponentClient` and `cookies()` to validate session.
+
+  - title: Build login and register forms
+    description: Use `shadcn/ui` inputs, buttons and alerts. Create separate files for each route.
+
+  - title: Add social login buttons
+    description: Add GitHub and Google buttons with loading state and error handling.
+
+  - title: Create protected dashboard route
+    description: Create `app/dashboard/page.tsx` and redirect to `/login` if no session is found.
+
+  - title: Add middleware or server logic
+    description: (Optional) Implement edge middleware if needed for token refresh or redirect guards.
+
+acceptance_criteria:
+  - Login with GitHub and Google works
+  - Session is validated server-side
+  - /dashboard is inaccessible without a session
+  - User experience is clean and consistent using shadcn/ui
+
+references:
+  - https://supabase.com/docs/guides/auth/server-side/nextjs
+  - https://ui.shadcn.com
+
+tags:
+  - auth
+  - frontend
+  - nextjs
+  - supabase

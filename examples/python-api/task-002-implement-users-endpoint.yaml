@@ -1,0 +1,60 @@
+task: implement-users-endpoint
+description: Create a `/users` endpoint using FastAPI and Pydantic v2 with async support and PostgreSQL for persistence.
+priority: high
+status: completed
+
+context:
+  project: AI-powered API
+  tech_stack:
+    - python@3.12
+    - fastapi
+    - postgresql
+    - pydantic@2.x
+    - sqlalchemy
+  endpoint: /users
+  methods: [GET, POST]
+  model:
+    fields:
+      - id: int
+      - name: str
+      - email: str
+      - is_active: bool = True
+
+objectives:
+  - Create GET /users to return a list of users
+  - Create POST /users to create a new user in the database
+  - Use `Annotated[...]` typing with Pydantic v2
+  - Use SQLAlchemy 2.0 async ORM
+
+steps:
+  - title: Create Pydantic schema
+    description: Define `UserCreate` and `UserResponse` using `BaseModel` and `ConfigDict` for field validation.
+
+  - title: Set up SQLAlchemy model
+    description: Define `User` ORM model using declarative base with `id`, `name`, `email`, `is_active`.
+
+  - title: Create database session dependency
+    description: Use async `Session` with dependency injection.
+
+  - title: Implement POST /users
+    description: Create user record from validated payload and commit to DB.
+
+  - title: Implement GET /users
+    description: Query all users and return response with validation.
+
+acceptance_criteria:
+  - Both endpoints respond with correct schema and status codes
+  - Code is fully typed and formatted
+  - Errors are properly handled (e.g. unique email constraint)
+  - Code is ready to be tested or extended in follow-up tasks
+
+references:
+  - https://docs.pydantic.dev/latest/
+  - https://fastapi.tiangolo.com
+  - https://docs.sqlalchemy.org/en/20/
+
+tags:
+  - api
+  - backend
+  - users
+  - fastapi

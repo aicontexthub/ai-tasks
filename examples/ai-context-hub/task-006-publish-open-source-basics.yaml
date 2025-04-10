@@ -1,0 +1,49 @@
+task: publish-open-source-basics
+description: Prepare the AI Tasks repository for open source publication by adding essential community files and metadata.
+priority: high
+status: completed
+
+context:
+  project: ai-tasks
+  organization: aicontexthub
+  visibility: public
+  goal: Make the repository welcoming, trustworthy, and ready for external collaboration
+
+objectives:
+  - Add licensing and legal clarity (MIT)
+  - Create a clear contributor guide
+  - Define a code of conduct for community standards
+  - Enable donations with Buy Me a Coffee
+  - Encourage external contributions and visibility
+
+steps:
+  - title: Add `LICENSE` file
+    description: Add MIT license file with current year and organization name.
+
+  - title: Add `CODE_OF_CONDUCT.md`
+    description: Include Contributor Covenant v2.1 and specify a real contact method for incident reports.
+
+  - title: Add `CONTRIBUTING.md`
+    description: Provide a clear, friendly guide on how to fork the repo, create PRs, and contribute templates or tasks.
+
+  - title: Create `.github/FUNDING.yml`
+    description: Add GitHub Sponsors or Buy Me a Coffee link to allow donations. Reflect it in the README.
+
+  - title: Add support section to root `README.md`
+    description: Include a section with Buy Me a Coffee badge and explanation for how to support the project.
+
+acceptance_criteria:
+  - LICENSE, CODE_OF_CONDUCT.md, and CONTRIBUTING.md exist and are visible in GitHub UI
+  - .github/FUNDING.yml is present and links to a valid platform
+  - The root README.md includes a "Support this project" section
+  - All content is clear, public-friendly, and consistent with open source best practices
+
+notes:
+  - This task marks the milestone where the repository becomes officially open source and contributor-ready.
+  - Use consistent formatting and tone aligned with the rest of the documentation.
+
+tags:
+  - open-source
+  - meta
+  - community
+  - onboarding

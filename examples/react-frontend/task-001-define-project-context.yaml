@@ -1,0 +1,48 @@
+task: define-project-context
+description: Define the base context for a modern SaaS frontend using Next.js and TailwindCSS with AI-assisted development.
+priority: high
+status: completed
+
+context:
+  project: SaaS Frontend Platform
+  tech_stack:
+    - nextjs@15
+    - react@19
+    - tailwindcss@4
+    - typescript
+    - shadcn/ui
+  architecture: App Router, Server Components, Minimal Client usage
+  ui: Reusable components via shadcn/ui
+
+objectives:
+  - Define the stack and architecture for the project
+  - Set clear frontend conventions for future tasks
+  - Document assumptions for layout, styling, and auth
+
+steps:
+  - title: Specify rendering strategy
+    description: Use React Server Components by default; isolate `"use client"` where strictly necessary.
+
+  - title: Define UI principles
+    description: Use `shadcn/ui` as base component library; extend via Tailwind variants when needed.
+
+  - title: Establish file structure
+    description: Place reusable components in `src/components/ui`, pages in `app/`, context in `contexts/`.
+
+  - title: Integrate TailwindCSS and Theme
+    description: Use `tailwind.config.ts` with custom tokens; enable dark mode using `class` strategy.
+
+  - title: Define layout system
+    description: Use `app/layout.tsx` with slot-based composition and `next/head` metadata handling.
+
+acceptance_criteria:
+  - Project structure is clearly defined and consistent
+  - shadcn/ui is integrated and documented
+  - TailwindCSS theme strategy is described
+  - React Server Components usage is clarified
+
+tags:
+  - context
+  - frontend
+  - nextjs
+  - react
